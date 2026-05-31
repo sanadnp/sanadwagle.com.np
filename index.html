@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SANAD WAGLE | Portfolio</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&amp;family=Newsreader:ital,opsz,wght@1,6..72,400;1,6..72,500;1,6..72,700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        surface: 'rgb(var(--surface) / <alpha-value>)',
+                        'on-surface': 'rgb(var(--on-surface) / <alpha-value>)',
+                        'on-surface-variant': 'rgb(var(--on-surface-variant) / <alpha-value>)',
+                        primary: 'rgb(var(--primary) / <alpha-value>)',
+                        'on-primary': 'rgb(var(--on-primary) / <alpha-value>)',
+                        'surface-container': 'rgb(var(--surface-container) / <alpha-value>)',
+                        'surface-container-low': 'rgb(var(--surface-container-low) / <alpha-value>)',
+                        'outline-variant': 'rgb(var(--outline-variant) / <alpha-value>)'
+                    },
+                    fontFamily: {
+                        headline: ["Newsreader", "serif"],
+                        body: ["Inter", "sans-serif"],
+                        label: ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --surface: 250 249 246;
+            /* #FAF9F6 */
+            --on-surface: 18 18 18;
+            /* #121212 */
+            --on-surface-variant: 68 68 68;
+            /* #444444 */
+            --primary: 18 18 18;
+            /* #121212 */
+            --on-primary: 250 249 246;
+            /* #FAF9F6 */
+            --surface-container: 242 241 236;
+            /* #F2F1EC */
+            --surface-container-low: 245 244 239;
+            /* #F5F4EF */
+            --outline-variant: 209 208 200;
+            /* #D1D0C8 */
+        }
+
+        .dark {
+            --surface: 10 10 10;
+            /* #0a0a0a */
+            --on-surface: 237 237 237;
+            /* #ededed */
+            --on-surface-variant: 163 163 163;
+            /* #a3a3a3 */
+            --primary: 237 237 237;
+            /* #ededed */
+            --on-primary: 10 10 10;
+            /* #0a0a0a */
+            --surface-container: 26 26 26;
+            /* #1a1a1a */
+            --surface-container-low: 23 23 23;
+            /* #171717 */
+            --outline-variant: 51 51 51;
+            /* #333333 */
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .text-huge {
+            font-size: clamp(4rem, 15vw, 10rem);
+            line-height: 0.85;
+        }
+
+        body {
+            cursor: crosshair;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .scroll-reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .scroll-reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .cutout-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cutout-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid rgba(18, 18, 18, 0.1);
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .cutout-img {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cutout-container:hover .cutout-img {
+            transform: scale(1.05);
+        }
+
+        .parallax {
+            will-change: transform;
+        }
+
+        /* Animated Dark Mode Switch */
+        .theme-switch {
+            --toggle-size: 12px;
+            --container-width: 5.625em;
+            --container-height: 2.5em;
+            --container-radius: 6.25em;
+            --container-light-bg: #3D7EAE;
+            --container-night-bg: #1D1F2C;
+            --circle-container-diameter: 3.375em;
+            --sun-moon-diameter: 2.125em;
+            --sun-bg: #ECCA2F;
+            --moon-bg: #C4C9D1;
+            --spot-color: #959DB1;
+            --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
+            --stars-color: #fff;
+            --clouds-color: #F3FDFF;
+            --back-clouds-color: #AACADF;
+            --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
+            --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
+        }
+
+        .theme-switch,
+        .theme-switch *,
+        .theme-switch *::before,
+        .theme-switch *::after {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-size: var(--toggle-size);
+        }
+
+        .theme-switch__container {
+            width: var(--container-width);
+            height: var(--container-height);
+            background-color: var(--container-light-bg);
+            border-radius: var(--container-radius);
+            overflow: hidden;
+            cursor: pointer;
+            -webkit-box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
+            box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
+            -webkit-transition: var(--transition);
+            -o-transition: var(--transition);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .theme-switch__container::before {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            inset: 0;
+            -webkit-box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
+            box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
+            border-radius: var(--container-radius)
+        }
+
+        .theme-switch__checkbox {
+            display: none;
+        }
+
+        .theme-switch__circle-container {
+            width: var(--circle-container-diameter);
+            height: var(--circle-container-diameter);
+            background-color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            left: var(--circle-container-offset);
+            top: var(--circle-container-offset);
+            border-radius: var(--container-radius);
+            -webkit-box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-transition: var(--circle-transition);
+            -o-transition: var(--circle-transition);
+            transition: var(--circle-transition);
+            pointer-events: none;
+        }
+
+        .theme-switch__sun-moon-container {
+            pointer-events: auto;
+            position: relative;
+            z-index: 2;
+            width: var(--sun-moon-diameter);
+            height: var(--sun-moon-diameter);
+            margin: auto;
+            border-radius: var(--container-radius);
+            background-color: var(--sun-bg);
+            -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
+            box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
+            -webkit-filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
+            filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
+            overflow: hidden;
+            -webkit-transition: var(--transition);
+            -o-transition: var(--transition);
+            transition: var(--transition);
+        }
+
+        .theme-switch__moon {
+            -webkit-transform: translateX(100%);
+            -ms-transform: translateX(100%);
+            transform: translateX(100%);
+            width: 100%;
+            height: 100%;
+            background-color: var(--moon-bg);
+            border-radius: inherit;
+            -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
+            box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
+            -webkit-transition: var(--transition);
+            -o-transition: var(--transition);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .theme-switch__spot {
+            position: absolute;
+            top: 0.75em;
+            left: 0.312em;
+            width: 0.75em;
+            height: 0.75em;
+            border-radius: var(--container-radius);
+            background-color: var(--spot-color);
+            -webkit-box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
+            box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
+        }
+
+        .theme-switch__spot:nth-of-type(2) {
+            width: 0.375em;
+            height: 0.375em;
+            top: 0.937em;
+            left: 1.375em;
+        }
+
+        .theme-switch__spot:nth-last-of-type(3) {
+            width: 0.25em;
+            height: 0.25em;
+            top: 0.312em;
+            left: 0.812em;
+        }
+
+        .theme-switch__clouds {
+            width: 1.25em;
+            height: 1.25em;
+            background-color: var(--clouds-color);
+            border-radius: var(--container-radius);
+            position: absolute;
+            bottom: -0.625em;
+            left: 0.312em;
+            -webkit-box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
+            box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
+            -webkit-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+            -o-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+            transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+        }
+
+        .theme-switch__stars-container {
+            position: absolute;
+            color: var(--stars-color);
+            top: -100%;
+            left: 0.312em;
+            width: 2.75em;
+            height: auto;
+            -webkit-transition: var(--transition);
+            -o-transition: var(--transition);
+            transition: var(--transition);
+        }
+
+        .theme-switch__checkbox:checked+.theme-switch__container {
+            background-color: var(--container-night-bg);
+        }
+
+        .theme-switch__checkbox:checked+.theme-switch__container .theme-switch__circle-container {
+            left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
+        }
+
+        .theme-switch__checkbox:checked+.theme-switch__container .theme-switch__circle-container:hover {
+            left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em)
+        }
+
+        .theme-switch__circle-container:hover {
+            left: calc(var(--circle-container-offset) + 0.187em);
+        }
+
+        .theme-switch__checkbox:checked+.theme-switch__container .theme-switch__moon {
+            -webkit-transform: translate(0);
+            -ms-transform: translate(0);
+            transform: translate(0);
+        }
+
+        .theme-switch__checkbox:checked+.theme-switch__container .theme-switch__clouds {
+            bottom: -4.062em;
+        }
+
+        .theme-switch__checkbox:checked+.theme-switch__container .theme-switch__stars-container {
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+        /* Social Bloom Buttons */
+        .social-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .social-btn .bloom-container {
+            position: relative;
+            transition: all 0.2s ease-in-out;
+            border: none;
+            background: none;
+        }
+
+        .social-btn .bloom-container .button-container-main {
+            width: 55px;
+            /* scaled down from 110px */
+            aspect-ratio: 1;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+            display: grid;
+            place-content: center;
+            border-right: 2px solid white;
+            border-left: 2px solid rgba(128, 128, 128, 0.147);
+            transform: rotate(-45deg);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .social-btn .bloom-container .button-container-main .button-inner {
+            height: 30px;
+            /* scaled down from 60px */
+            aspect-ratio: 1;
+            border-radius: 50%;
+            position: relative;
+            box-shadow: rgba(100, 100, 111, 0.5) -5px 2px 5px 0px;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .social-btn .bloom-container .button-container-main .button-inner .back {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: linear-gradient(60deg,
+                    rgb(1, 85, 103) 0%,
+                    rgb(147, 245, 255) 100%);
+        }
+
+        .social-btn .bloom-container .button-container-main .button-inner .front {
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: linear-gradient(60deg,
+                    rgb(0, 103, 140) 0%,
+                    rgb(58, 209, 233) 100%);
+            display: grid;
+            place-content: center;
+        }
+
+        .social-btn .bloom-container .button-container-main .button-inner .front .social-icon {
+            width: 15px;
+            aspect-ratio: 1;
+            transform: rotate(45deg);
+            transition: all 0.2s ease-in;
+            object-fit: contain;
+        }
+
+        .social-btn .bloom-container .button-container-main .button-glass {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.888) 100%);
+            transform: translate(0%, -50%) rotate(0deg);
+            transform-origin: bottom center;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .social-btn .bloom-container .bloom {
+            height: 1px;
+            width: 1px;
+            position: absolute;
+            background: white;
+        }
+
+        .social-btn .bloom-container .bloom1 {
+            top: 5px;
+            right: 10px;
+            box-shadow:
+                rgb(255, 255, 255) 0px 0px 5px 5px,
+                rgb(255, 255, 255) 0px 0px 10px 10px;
+        }
+
+        .social-btn .bloom-container .bloom2 {
+            bottom: 5px;
+            left: 10px;
+            box-shadow:
+                rgba(255, 255, 255, 0.5) 0px 0px 5px 5px,
+                rgba(255, 255, 255, 0.5) 0px 0px 15px 10px;
+        }
+
+        .social-btn .bloom-container:hover {
+            transform: scale(1.1);
+        }
+
+        .social-btn .bloom-container:hover .button-container-main .button-glass {
+            transform: translate(0%, -40%);
+        }
+
+        .social-btn .bloom-container:hover .button-container-main .button-inner .front .social-icon {
+            filter: drop-shadow(0 0 5px white) brightness(1.2);
+        }
+
+        .social-btn .bloom-container:active {
+            transform: scale(0.7);
+        }
+
+        .social-btn .bloom-container:active .button-container-main .button-inner {
+            transform: scale(1.2);
+        }
+
+        /* Card Flip Animation */
+        .flip-card {
+            background-color: transparent;
+            width: 240px;
+            height: 154px;
+            perspective: 1000px;
+            color: white;
+        }
+
+        .heading_8264 {
+            position: absolute;
+            letter-spacing: .2em;
+            font-size: 0.5em;
+            top: 2em;
+            left: 18.6em;
+        }
+
+        .logo {
+            position: absolute;
+            top: 6.8em;
+            left: 11.7em;
+        }
+
+        .chip {
+            position: absolute;
+            top: 2.3em;
+            left: 1.5em;
+        }
+
+        .contactless {
+            position: absolute;
+            top: 3.5em;
+            left: 12.4em;
+        }
+
+        .number {
+            position: absolute;
+            font-weight: bold;
+            font-size: .6em;
+            top: 8.3em;
+            left: 1.6em;
+        }
+
+        .valid_thru {
+            position: absolute;
+            font-weight: bold;
+            top: 635.8em;
+            font-size: .01em;
+            left: 140.3em;
+        }
+
+        .date_8264 {
+            position: absolute;
+            font-weight: bold;
+            font-size: 0.5em;
+            top: 13.6em;
+            left: 3.2em;
+        }
+
+        .name {
+            position: absolute;
+            font-weight: bold;
+            font-size: 0.5em;
+            top: 16.1em;
+            left: 2em;
+        }
+
+        .strip {
+            position: absolute;
+            background-color: black;
+            width: 15em;
+            height: 1.5em;
+            top: 2.4em;
+            background: repeating-linear-gradient(45deg,
+                    #303030,
+                    #303030 10px,
+                    #202020 10px,
+                    #202020 20px);
+        }
+
+        .mstrip {
+            position: absolute;
+            background-color: rgb(255, 255, 255);
+            width: 8em;
+            height: 0.8em;
+            top: 5em;
+            left: .8em;
+            border-radius: 2.5px;
+        }
+
+        .sstrip {
+            position: absolute;
+            background-color: rgb(255, 255, 255);
+            width: 4.1em;
+            height: 0.8em;
+            top: 5em;
+            left: 10em;
+            border-radius: 2.5px;
+        }
+
+        .code {
+            font-weight: bold;
+            text-align: center;
+            margin: .2em;
+            color: black;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+        }
+
+        .flip-card-front {
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+            background-color: #171717;
+        }
+
+        .flip-card-back {
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -1px 0px inset;
+            background-color: #171717;
+            transform: rotateY(180deg);
+        }
+
+        /* Wallet Wrapper */
+        .wallet {
+            position: relative;
+            width: 280px;
+            height: 230px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            transition: transform 0.4s ease;
+        }
+
+        .wallet {
+            position: relative;
+            width: 280px;
+            height: 230px;
+            cursor: pointer;
+            perspective: 1000px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            transition: transform 0.4s ease;
+        }
+
+        @keyframes slideIntoPocket {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .wallet-back {
+            position: absolute;
+            bottom: 0;
+            width: 280px;
+            height: 200px;
+            background: #0f110f;
+            border-radius: 22px 22px 60px 60px;
+            z-index: 5;
+            box-shadow: inset 0 25px 35px rgba(0, 0, 0, 0.4), inset 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .social-card {
+            position: absolute;
+            width: 260px;
+            height: 140px;
+            left: 10px;
+            border-radius: 16px;
+            padding: 18px;
+            color: white;
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 -4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), z-index 0s;
+            animation: slideIntoPocket 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+            text-decoration: none;
+        }
+
+        .card-inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .social-chip {
+            width: 32px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .social-label {
+            font-size: 8px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+            display: block;
+        }
+
+        .social-value {
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .card-number-wrapper {
+            text-align: right;
+            max-width: 140px;
+            overflow: hidden;
+        }
+
+        .hidden-stars {
+            font-size: 14px;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        .card-number {
+            display: none;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-logo {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+            opacity: 0.9;
+        }
+
+        .card-bg-icon {
+            position: absolute;
+            right: -10px;
+            bottom: -10px;
+            width: 80px;
+            height: 80px;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+            pointer-events: none;
+        }
+
+        .card-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            bottom: 100px;
+            z-index: 10;
+            animation-delay: 0.1s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-facebook {
+            background: #1877F2;
+            bottom: 80px;
+            z-index: 20;
+            animation-delay: 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-github {
+            background: #1A1A1A;
+            bottom: 60px;
+            z-index: 30;
+            animation-delay: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-gdev {
+            background: #ffffff;
+            color: #4285F4;
+            bottom: 40px;
+            z-index: 40;
+            animation-delay: 0.4s;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .card-gdev .social-chip {
+            background: rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .card-gdev .social-label {
+            color: #5f6368;
+        }
+
+        .pocket {
+            position: absolute;
+            bottom: 0;
+            width: 280px;
+            height: 160px;
+            z-index: 40;
+            filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.4));
+        }
+
+        .pocket-content {
+            position: absolute;
+            top: 45px;
+            width: 100%;
+            text-align: center;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .balance-stars {
+            color: #a3a3a3;
+            font-size: 24px;
+            letter-spacing: 4px;
+            transition: 0.3s;
+        }
+
+        .balance-real {
+            color: var(--primary);
+            font-size: 22px;
+            font-weight: 600;
+            opacity: 0;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 10px);
+            transition: 0.3s;
+            text-transform: uppercase;
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+        }
+
+        .eye-icon-wrapper {
+            margin-top: 8px;
+            height: 20px;
+            width: 20px;
+            position: relative;
+            opacity: 0.3;
+            transition: 0.3s;
+        }
+
+        .eye-icon {
+            position: absolute;
+            top: 0;
+            left: 0;
+            stroke: #ededed;
+            transition: 0.3s;
+        }
+
+        .wallet:hover {
+            transform: translateY(-5px);
+        }
+
+        .wallet:hover .eye-icon-wrapper {
+            opacity: 1;
+        }
+
+        .wallet:hover .card-instagram {
+            transform: translateY(-90px) rotate(-5deg);
+        }
+
+        .wallet:hover .card-facebook {
+            transform: translateY(-60px) rotate(-1deg);
+        }
+
+        .wallet:hover .card-github {
+            transform: translateY(-30px) rotate(2deg);
+        }
+
+        .wallet:hover .card-gdev {
+            transform: translateY(-10px) rotate(5deg);
+        }
+
+        .social-card:hover {
+            z-index: 100 !important;
+            transition-delay: 0s !important;
+        }
+
+        .wallet:hover .card-instagram:hover {
+            transform: translateY(-75px) scale(1.05) rotate(0);
+        }
+
+        .wallet:hover .card-facebook:hover {
+            transform: translateY(-65px) scale(1.05) rotate(0);
+        }
+
+        .wallet:hover .card-github:hover {
+            transform: translateY(-55px) scale(1.05) rotate(0);
+        }
+
+        .wallet:hover .card-gdev:hover {
+            transform: translateY(-45px) scale(1.05) rotate(0);
+        }
+
+        .social-card:hover .hidden-stars {
+            display: none;
+        }
+
+        .social-card:hover .card-number {
+            display: block;
+        }
+
+        .wallet:hover .balance-stars {
+            opacity: 0;
+        }
+
+        .wallet:hover .balance-real {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .wallet:hover .eye-slash {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        .wallet:hover .eye-open {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Uiverse terminal widget (scoped) */
+        .uiverse-terminal .container {
+            width: 230px;
+            height: 194px;
+        }
+
+        .uiverse-terminal .terminal_toolbar {
+            display: flex;
+            height: 30px;
+            align-items: center;
+            padding: 0 8px;
+            box-sizing: border-box;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            background: linear-gradient(#504b45 0%, #3c3b37 100%);
+        }
+
+        .uiverse-terminal .butt {
+            display: flex;
+            align-items: center;
+        }
+
+        .uiverse-terminal .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            margin-right: 5px;
+            font-size: 8px;
+            height: 12px;
+            width: 12px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 100%;
+            background: linear-gradient(#7d7871 0%, #595953 100%);
+            text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 0px 1px 0px #41403A, 0px 1px 1px 0px #474642;
+        }
+
+        .uiverse-terminal .btn-color {
+            background: #ee411a;
+        }
+
+        .uiverse-terminal .btn:hover {
+            cursor: pointer;
+        }
+
+        .uiverse-terminal .btn:focus {
+            outline: none;
+        }
+
+        .uiverse-terminal .butt--exit {
+            background: linear-gradient(#f37458 0%, #de4c12 100%);
+        }
+
+        .uiverse-terminal .user {
+            color: #d5d0ce;
+            margin-left: 6px;
+            font-size: 14px;
+            line-height: 15px;
+        }
+
+        .uiverse-terminal .terminal_body {
+            background: rgba(56, 4, 40, 0.9);
+            height: calc(100% - 30px);
+            padding-top: 2px;
+            margin-top: -1px;
+            font-size: 12px;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .uiverse-terminal .terminal_promt {
+            display: flex;
+        }
+
+        .uiverse-terminal .terminal_promt span {
+            margin-left: 4px;
+        }
+
+        .uiverse-terminal .terminal_user {
+            color: #7eda28;
+        }
+
+        .uiverse-terminal .terminal_location {
+            color: #4878c0;
+        }
+
+        .uiverse-terminal .terminal_bling {
+            color: #dddddd;
+        }
+
+        .uiverse-terminal .terminal_cursor {
+            display: block;
+            height: 14px;
+            width: 5px;
+            margin-left: 10px;
+            animation: curbl 1200ms linear infinite;
+        }
+
+        /* ── Mobile Nav Drawer ── */
+        #mobile-drawer {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            pointer-events: none;
+        }
+        #mobile-drawer-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+        #mobile-drawer-panel {
+            position: absolute;
+            top: 0; right: 0;
+            width: min(80vw, 300px);
+            height: 100%;
+            background: rgb(var(--surface));
+            border-left: 1px solid rgb(var(--outline-variant));
+            transform: translateX(100%);
+            transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
+            display: flex;
+            flex-direction: column;
+            padding: 5rem 2.5rem 2.5rem;
+            gap: 2.5rem;
+        }
+        #mobile-drawer.open { pointer-events: auto; }
+        #mobile-drawer.open #mobile-drawer-overlay { opacity: 1; }
+        #mobile-drawer.open #mobile-drawer-panel { transform: translateX(0); }
+        .drawer-link {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 2.5rem;
+            color: rgb(var(--on-surface));
+            text-decoration: none;
+            opacity: 0.4;
+            transition: opacity 0.2s;
+        }
+        .drawer-link:hover { opacity: 1; }
+
+        /* ── Mobile Hero fix ── */
+        @media (max-width: 767px) {
+            .hero-portrait {
+                opacity: 0.12 !important;
+                pointer-events: none;
+            }
+            /* Extra bottom padding so content clears the bottom nav */
+            main { padding-bottom: 4.5rem; }
+            footer { padding-bottom: 5rem; }
+
+            /* Wallet: tap to expand on mobile */
+            .wallet-touch-expanded .card-instagram { transform: translateY(-90px) rotate(-5deg) !important; }
+            .wallet-touch-expanded .card-facebook  { transform: translateY(-60px) rotate(-1deg) !important; }
+            .wallet-touch-expanded .card-github    { transform: translateY(-30px) rotate(2deg)  !important; }
+            .wallet-touch-expanded .card-gdev      { transform: translateY(-10px) rotate(5deg)  !important; }
+            .wallet-touch-expanded .balance-stars  { opacity: 0; }
+            .wallet-touch-expanded .balance-real   { opacity: 1; transform: translate(-50%, 0); }
+            .wallet-touch-expanded .eye-icon-wrapper { opacity: 1; }
+
+            /* Flip card: tap to flip on mobile */
+            .flip-card-tapped .flip-card-inner { transform: rotateY(180deg); }
+
+            /* Contact email wrap */
+            #contact a[href^="mailto"] {
+                font-size: 1.35rem !important;
+                word-break: break-all;
+            }
+
+            /* Bottom nav active state managed by JS */
+            .bottom-nav-link.active {
+                color: rgb(var(--primary)) !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
+    <!-- TopAppBar -->
+    <header
+        class="fixed top-0 w-full z-[100] flex justify-between items-center px-6 md:px-12 py-6 bg-surface transition-colors duration-300">
+        <div class="text-2xl font-headline italic tracking-tighter font-bold text-on-surface">
+            SANAD WAGLE
+        </div>
+        <div class="flex items-center gap-8">
+            <nav class="hidden md:flex items-center space-x-12">
+                <a class="text-on-surface border-b border-on-surface pb-0.5 font-sans text-xs tracking-widest uppercase transition-all cubic-bezier(0.16, 1, 0.3, 1)"
+                    href="#work">WORK</a>
+                <a class="text-neutral-500 font-sans text-xs tracking-widest uppercase hover:text-on-surface transition-colors duration-200"
+                    href="#about">ABOUT</a>
+                <a class="text-neutral-500 font-sans text-xs tracking-widest uppercase hover:text-on-surface transition-colors duration-200"
+                    href="#contact">CONTACT</a>
+            </nav>
+            <label class="theme-switch mt-1 md:mt-0">
+                <input type="checkbox" class="theme-switch__checkbox hidden" id="theme-toggle">
+                <div class="theme-switch__container">
+                    <div class="theme-switch__clouds"></div>
+                    <div class="theme-switch__stars-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 55" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M135.831 3.00688C135.055 3.85027 134.111 4.29946 133 4.35447C134.111 4.40947 135.055 4.85867 135.831 5.71123C136.607 6.55462 136.996 7.56303 136.996 8.72727C136.996 7.95722 137.172 7.25134 137.525 6.59129C137.886 5.93124 138.372 5.39954 138.98 5.00535C139.598 4.60199 140.268 4.39114 141 4.35447C139.88 4.2903 138.936 3.85027 138.16 3.00688C137.384 2.16348 136.996 1.16425 136.996 0C136.996 1.16425 136.607 2.16348 135.831 3.00688ZM31 23.3545C32.1114 23.2995 33.0551 22.8503 33.8313 22.0069C34.6075 21.1635 34.9956 20.1642 34.9956 19C34.9956 20.1642 35.3837 21.1635 36.1599 22.0069C36.9361 22.8503 37.8798 23.2903 39 23.3545C38.2679 23.3911 37.5976 23.602 36.9802 24.0053C36.3716 24.3995 35.8864 24.9312 35.5248 25.5913C35.172 26.2513 34.9956 26.9572 34.9956 27.7273C34.9956 26.563 34.6075 25.5546 33.8313 24.7112C33.0551 23.8587 32.1114 23.4095 31 23.3545ZM0 36.3545C1.11136 36.2995 2.05513 35.8503 2.83131 35.0069C3.6075 34.1635 3.99559 33.1642 3.99559 32C3.99559 33.1642 4.38368 34.1635 5.15987 35.0069C5.93605 35.8503 6.87982 36.2903 8 36.3545C7.26792 36.3911 6.59757 36.602 5.98015 37.0053C5.37155 37.3995 4.88644 37.9312 4.52481 38.5913C4.172 39.2513 3.99559 39.9572 3.99559 40.7273C3.99559 39.563 3.6075 38.5546 2.83131 37.7112C2.05513 36.8587 1.11136 36.4095 0 36.3545ZM56.8313 24.0069C56.0551 24.8503 55.1114 25.2995 54 25.3545C55.1114 25.4095 56.0551 25.8587 56.8313 26.7112C57.6075 27.5546 57.9956 28.563 57.9956 29.7273C57.9956 28.9572 58.172 28.2513 58.5248 27.5913C58.8864 26.9312 59.3716 26.3995 59.9802 26.0053C60.5976 25.602 61.2679 25.3911 62 25.3545C60.8798 25.2903 59.9361 24.8503 59.1599 24.0069C58.3837 23.1635 57.9956 22.1642 57.9956 21C57.9956 22.1642 57.6075 23.1635 56.8313 24.0069ZM81 25.3545C82.1114 25.2995 83.0551 24.8503 83.8313 24.0069C84.6075 23.1635 84.9956 22.1642 84.9956 21C84.9956 22.1642 85.3837 23.1635 86.1599 24.0069C86.9361 24.8503 87.8798 25.2903 89 25.3545C88.2679 25.3911 87.5976 25.602 86.9802 26.0053C86.3716 26.3995 85.8864 26.9312 85.5248 27.5913C85.172 28.2513 84.9956 28.9572 84.9956 29.7273C84.9956 28.563 84.6075 27.5546 83.8313 26.7112C83.0551 25.8587 82.1114 25.4095 81 25.3545ZM136 36.3545C137.111 36.2995 138.055 35.8503 138.831 35.0069C139.607 34.1635 139.996 33.1642 139.996 32C139.996 33.1642 140.384 34.1635 141.16 35.0069C141.936 35.8503 142.88 36.2903 144 36.3545C143.268 36.3911 142.598 36.602 141.98 37.0053C141.372 37.3995 140.886 37.9312 140.525 38.5913C140.172 39.2513 139.996 39.9572 139.996 40.7273C139.996 39.563 139.607 38.5546 138.831 37.7112C138.055 36.8587 137.111 36.4095 136 36.3545ZM101.831 49.0069C101.055 49.8503 100.111 50.2995 99 50.3545C100.111 50.4095 101.055 50.8587 101.831 51.7112C102.607 52.5546 102.996 53.563 102.996 54.7273C102.996 53.9572 103.172 53.2513 103.525 52.5913C103.886 51.9312 104.372 51.3995 104.98 51.0053C105.598 50.602 106.268 50.3911 107 50.3545C105.88 50.2903 104.936 49.8503 104.16 49.0069C103.384 48.1635 102.996 47.1642 102.996 46C102.996 47.1642 102.607 48.1635 101.831 49.0069Z"
+                                fill="currentColor"></path>
+                        </svg>
+                    </div>
+                    <div class="theme-switch__circle-container">
+                        <div class="theme-switch__sun-moon-container">
+                            <div class="theme-switch__moon">
+                                <div class="theme-switch__spot"></div>
+                                <div class="theme-switch__spot"></div>
+                                <div class="theme-switch__spot"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+            <button id="menu-open-btn" class="md:hidden text-on-surface ml-4 p-2 -mr-2" aria-label="Open menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+    </header>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobile-drawer">
+        <div id="mobile-drawer-overlay"></div>
+        <div id="mobile-drawer-panel">
+            <button id="menu-close-btn" class="absolute top-6 right-6 text-on-surface" aria-label="Close menu">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+            <a class="drawer-link" href="#work"   onclick="closeDrawer()">Work</a>
+            <a class="drawer-link" href="#about"  onclick="closeDrawer()">About</a>
+            <a class="drawer-link" href="#contact" onclick="closeDrawer()">Contact</a>
+            <div class="mt-auto">
+                <p class="text-[10px] tracking-[0.3em] uppercase text-neutral-500">SANAD WAGLE &copy; 2024</p>
+            </div>
+        </div>
+    </div>
+    <main class="pt-32">
+        <!-- Hero Section -->
+        <section
+            class="px-6 md:px-12 pt-16 md:pt-24 pb-24 flex flex-col justify-center relative min-h-[calc(100vh-8rem)]">
+            <div class="max-w-screen-2xl">
+                <h1 class="relative z-50 text-huge font-headline italic font-medium uppercase tracking-tighter text-primary scroll-reveal parallax -mt-8 mb-12"
+                    data-speed="0.25">
+                    SANAD<br />WAGLE
+                </h1>
+                <div
+                    class="hero-portrait absolute top-0 bottom-0 right-[-10%] md:right-0 w-[110%] md:w-[55%] z-0 md:z-40 opacity-20 md:opacity-100 pointer-events-none md:pointer-events-auto">
+                    <img id="hero-image" src="sanad-cutout.png" alt="Sanad Wagle"
+                        class="parallax w-full h-full object-contain object-bottom grayscale transition-all duration-700"
+                        data-speed="-0.08">
+                </div>
+                <p
+                    class="relative z-50 font-headline text-2xl md:text-4xl text-on-surface-variant max-w-xl leading-snug mb-8">
+                    Student. Developer. Focused on clarity, structure, and building things that just work.
+                </p>
+                <div class="relative z-50 flex items-center gap-4">
+                    <span class="text-[10px] tracking-[0.3em] font-label uppercase text-neutral-500">AVAILABLE FOR
+                        PROJECTS</span>
+                    <div class="w-2 h-2 bg-primary animate-pulse"></div>
+                </div>
+            </div>
+        </section>
+        <!-- Gallery Section -->
+        <section id="work" class="bg-surface-container-low py-32 px-6 md:px-12">
+            <div
+                class="mb-24 flex flex-col md:flex-row justify-between items-baseline border-b border-outline-variant pb-8">
+                <h2 class="font-headline italic text-5xl md:text-7xl text-primary">Selected Works</h2>
+                <span
+                    class="font-label text-[10px] tracking-[0.2em] uppercase text-neutral-500 mt-4 md:mt-0">2021—2024</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-32">
+                <!-- Project 1 -->
+                <div class="group cursor-pointer scroll-reveal">
+                    <div class="aspect-[4/5] overflow-hidden bg-surface-container mb-8 relative">
+                        <div class="absolute w-full h-[120%] -top-[10%] left-0 parallax" data-speed="-0.04">
+                            <img alt="Abstract 3D architecture"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8Ld3_qw-9u8ehonI4cyh3EWgXuwZd6iqneayRpg2Z_BOqfc1iS-BTrMu5W5iMU7qgzY8rJGxnASqKPJzQxObTvgavMKh30nXwa8E9YkYdnLLetfeQ1D2ddIuzGYs8w4wuN3sHVcKNI1rcTuSS5E-Sw67EAyKAxue7CrM9k41rseQifQk-DqwH788fkHCUh6CZ7v2INqIKHFt75ynfweRODrMM5SgIPqIZLPLLG06bhHGCO26hb4nmeJTBN4_1uUWbSQXy7w5zD-A" />
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-headline italic text-3xl mb-2 text-on-surface">NEO-MONOLITH</h3>
+                            <p class="font-label text-xs uppercase tracking-widest text-neutral-500">Identity &amp; Web
+                                Development</p>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_outward</span>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="group cursor-pointer md:mt-48 scroll-reveal scroll-reveal-delay-1">
+                    <div class="aspect-[4/5] overflow-hidden bg-surface-container mb-8 relative">
+                        <div class="absolute w-full h-[120%] -top-[10%] left-0 parallax" data-speed="-0.06">
+                            <img alt="Minimalist product design"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy5d1_27uBBcV3QIWKXOCy6A2diiWP6Zz8_n4rY5PCTUYurf8Z6yW1JyaOF_lQ3CFIejnWlA-EZDPb4FFzMqTh-WTKPGavaPbg4gnExj4XuMEGfoKXtJqnGqhazn0V1Bi_cT4AxXC7rIaLRktuKSAVKS6jbOT5KnfYtTB1QZUQXzTyy5lNbVZn02omtsR-Qul2ZB1_pA-tLq5Ns8Mbyt4zYG8vn3Qi12V0kVMUZWYGeBYR1Znj86algm65lRneLPb23fgfRH81T3Q" />
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-headline italic text-3xl mb-2 text-on-surface">SILENT CORE</h3>
+                            <p class="font-label text-xs uppercase tracking-widest text-neutral-500">Visual Research</p>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_outward</span>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="group cursor-pointer scroll-reveal scroll-reveal-delay-2">
+                    <div class="aspect-[16/9] md:col-span-2 overflow-hidden bg-surface-container mb-8 relative">
+                        <div class="absolute w-full h-[120%] -top-[10%] left-0 parallax" data-speed="-0.03">
+                            <img alt="Minimalist interior"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUlgIsgtPqCtPG9FdtkX7Kv_CGPE0Q1WyJjHL6MlxiOIegR5E5gqLb86nwOJxGQ1N7nCPkShOQkJ8HUEWKVv4Qkm1QR9wHkaM1uqqHe4QAgJQm7hmj4LDa1TZRX7pYdLQsVKiTh7Lnhx7s-TebInpF24TY2171M8vlxmzkJgXuUiooRQG53jYerT-UBlEmX-GWtK-l64x4o3JG2h_n82W06MFWYU8BE3d7cmevrqrAMqg_io5eW3XOnd95gCRtE0K2KbmAYe8Emq4" />
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-headline italic text-3xl mb-2 text-on-surface">VOID GALLERY</h3>
+                            <p class="font-label text-xs uppercase tracking-widest text-neutral-500">Experiential Design
+                            </p>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_outward</span>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="group cursor-pointer scroll-reveal scroll-reveal-delay-3">
+                    <div class="aspect-[4/5] overflow-hidden bg-surface-container mb-8 relative">
+                        <div class="absolute w-full h-[120%] -top-[10%] left-0 parallax" data-speed="-0.04">
+                            <img alt="Brutalist typography"
+                                class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-105"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC56uzmMKnkmTDFngHqvVn8N1f7NFxv1T5QGilh8TyTSEZ0eYChDa_0XlwM49wY1f4067kS-kb9bxfJ372idL6pkH9pYamiR-LBmOOhcVKaR-mG_8PzKKuwiTMYpOFO7gii4JSEHZM09AEobefRSQet741TeDJ1vxExrD9LuUk5bgn67qKBmX5QGC9mXLZGWSuEEKJRn7KHp1JZ-6JvlyR0-UqxF-1D7OLj9gPJjRNkkd5eaP1oom05mEs8jlmn6rEKKB7NdDRPdYk" />
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-headline italic text-3xl mb-2 text-on-surface">EDITORIAL TENSION</h3>
+                            <p class="font-label text-xs uppercase tracking-widest text-neutral-500">Brand System</p>
+                        </div>
+                        <span
+                            class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_outward</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Education Section -->
+        <section class="py-32 px-6 md:px-12 border-t border-outline-variant">
+            <div class="mb-24 flex flex-col justify-between items-baseline border-b border-outline-variant pb-8">
+                <h2 class="font-headline italic text-5xl md:text-7xl text-primary">Education</h2>
+            </div>
+            <div class="max-w-5xl ml-4 md:ml-12 pt-12 pb-12">
+                <div class="relative border-l border-outline-variant ml-10 space-y-32">
+                    <!-- Trinity -->
+                    <div class="relative group scroll-reveal pl-16 md:pl-24">
+                        <div
+                            class="absolute -left-10 top-[-10px] w-20 h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-0 border border-outline-variant z-10 transition-transform duration-700 group-hover:scale-110">
+                            <img src="https://www.trinity.edu.np/assets/backend/uploads/Logo/trinity%20college%20logo.jpg"
+                                alt="Trinity College Logo"
+                                class="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700">
+                        </div>
+                        <div class="pt-2">
+                            <p class="font-label text-[10px] tracking-widest uppercase text-neutral-500 mb-2">Class 11
+                                &amp; 12</p>
+                            <h3 class="font-headline italic text-3xl md:text-5xl mb-4 text-on-surface">Trinity
+                                International SS &amp; College</h3>
+                            <p class="text-on-surface-variant font-body text-lg leading-relaxed">Kathmandu</p>
+                        </div>
+                    </div>
+                    <!-- Amarsingh -->
+                    <div class="relative group scroll-reveal scroll-reveal-delay-1 pl-16 md:pl-24">
+                        <div
+                            class="absolute -left-10 top-[-10px] w-20 h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-1 border border-outline-variant z-10 transition-transform duration-700 group-hover:scale-110">
+                            <img src="https://www.google.com/s2/favicons?domain=amv.edu.np&sz=256"
+                                alt="Amarsingh School Logo"
+                                class="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700">
+                        </div>
+                        <div class="pt-2">
+                            <p class="font-label text-[10px] tracking-widest uppercase text-neutral-500 mb-2">Till 10th
+                            </p>
+                            <h3 class="font-headline italic text-3xl md:text-5xl mb-4 text-on-surface">Amarsingh
+                                Secondary School</h3>
+                            <p class="text-on-surface-variant font-body text-lg leading-relaxed">Ramghat, Kaski</p>
+                        </div>
+                    </div>
+                    <!-- Bal Bidhya Mandir -->
+                    <div class="relative group scroll-reveal scroll-reveal-delay-2 pl-16 md:pl-24">
+                        <div
+                            class="absolute -left-10 top-[-10px] w-20 h-20 rounded-full overflow-hidden bg-white flex items-center justify-center p-0 border border-outline-variant z-10 transition-transform duration-700 group-hover:scale-110">
+                            <img src="bvm-logo.png" alt="Bal Bidhya Mandir Logo"
+                                class="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-700">
+                        </div>
+                        <div class="pt-2">
+                            <p class="font-label text-[10px] tracking-widest uppercase text-neutral-500 mb-2">Till 8th
+                            </p>
+                            <h3 class="font-headline italic text-3xl md:text-5xl mb-4 text-on-surface">Bal Bidhya Mandir
+                                Sec. School</h3>
+                            <p class="text-on-surface-variant font-body text-lg leading-relaxed">Dulegaunda, Tanahun</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about"
+            class="py-48 px-6 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-y-24 md:gap-y-32 items-start">
+            <div class="md:col-span-7">
+                <span
+                    class="font-label text-[10px] tracking-[0.4em] uppercase text-neutral-500 block mb-12 scroll-reveal">PHILOSOPHY</span>
+                <p
+                    class="font-headline italic text-4xl md:text-6xl leading-[1.1] text-primary scroll-reveal scroll-reveal-delay-1">
+                    I believe that the most powerful digital experiences are the ones that feel effortless. Design isn't
+                    about adding more—it's the relentless pursuit of the essential.
+                </p>
+            </div>
+            <div class="md:col-span-5 md:col-start-8 space-y-8 scroll-reveal scroll-reveal-delay-2">
+                <p class="text-on-surface-variant font-body text-lg leading-relaxed">
+                    Based in Nepal, working globally. I bridge the gap between creative aesthetic and technical
+                    execution, ensuring that the initial soul of a concept is preserved through to the final, precise
+                    line of code.
+                </p>
+                <a class="inline-block font-label text-xs uppercase tracking-[0.4em] border-b border-on-surface pb-2 hover:opacity-50 transition-opacity text-on-surface"
+                    href="#">READ FULL MANIFESTO</a>
+            </div>
+        </section>
+
+        <!-- Interactive Craft Section -->
+        <section
+            class="py-32 px-6 md:px-12 bg-surface-container-low flex flex-col justify-center items-center text-center border-t border-outline-variant">
+            <div class="mb-16">
+                <span
+                    class="font-label text-[10px] tracking-[0.4em] uppercase text-neutral-500 block mb-6 scroll-reveal">DIGITAL
+                    CRAFT</span>
+                <h2 class="font-headline italic text-4xl md:text-5xl text-primary scroll-reveal scroll-reveal-delay-1">
+                    Interactive Elements</h2>
+                <p class="text-on-surface-variant font-body text-sm mt-4 scroll-reveal scroll-reveal-delay-2">Showcasing
+                    detailed UI execution and smooth 3D interactions.</p>
+            </div>
+            <div class="scroll-reveal scroll-reveal-delay-3" style="perspective: 1000px;">
+                <div class="flip-card" id="flip-card-main" role="button" aria-label="Flip card to see back">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <p class="heading_8264">MASTERCARD</p>
+                            <svg class="logo" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="36" height="36"
+                                viewBox="0 0 48 48">
+                                <path fill="#ff9800" d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z"></path>
+                                <path fill="#d50000" d="M16 10A14 14 0 1 0 16 38A14 14 0 1 0 16 10Z"></path>
+                                <path fill="#ff3d00"
+                                    d="M18,24c0,4.755,2.376,8.95,6,11.48c3.624-2.53,6-6.725,6-11.48s-2.376-8.95-6-11.48 C20.376,15.05,18,19.245,18,24z">
+                                </path>
+                            </svg>
+                            <svg version="1.1" class="chip" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="30px"
+                                viewBox="0 0 50 50" xml:space="preserve">
+                                <image id="image0" width="50" height="50" x="0" y="0" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+                      AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAB6VBMVEUAAACNcTiVeUKVeUOY
+                      fEaafEeUeUSYfEWZfEaykleyklaXe0SWekSZZjOYfEWYe0WXfUWXe0WcgEicfkiXe0SVekSXekSW
+                      ekKYe0a9nF67m12ZfUWUeEaXfESVekOdgEmVeUWWekSniU+VeUKVeUOrjFKYfEWliE6WeESZe0GS
+                      e0WYfES7ml2Xe0WXeESUeEOWfEWcf0eWfESXe0SXfEWYekSVeUKXfEWxklawkVaZfEWWekOUekOW
+                      ekSYfESZe0eXekWYfEWZe0WZe0eVeUSWeETAnmDCoWLJpmbxy4P1zoXwyoLIpWbjvXjivnjgu3bf
+                      u3beunWvkFWxkle/nmDivXiWekTnwXvkwHrCoWOuj1SXe0TEo2TDo2PlwHratnKZfEbQrWvPrWua
+                      fUfbt3PJp2agg0v0zYX0zYSfgkvKp2frxX7mwHrlv3rsxn/yzIPgvHfduXWXe0XuyIDzzISsjVO1
+                      lVm0lFitjVPzzIPqxX7duna0lVncuHTLqGjvyIHeuXXxyYGZfUayk1iyk1e2lln1zYTEomO2llrb
+                      tnOafkjFpGSbfkfZtXLhvHfkv3nqxH3mwXujhU3KqWizlFilh06khk2fgkqsjlPHpWXJp2erjVOh
+                      g0yWe0SliE+XekShhEvAn2D///+gx8TWAAAARnRSTlMACVCTtsRl7Pv7+vxkBab7pZv5+ZlL/UnU
+                      /f3SJCVe+Fx39naA9/75XSMh0/3SSkia+pil/KRj7Pr662JPkrbP7OLQ0JFOijI1MwAAAAFiS0dE
+                      orDd34wAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IDx2lsiuJAAACLElEQVRIx2Ng
+                      GAXkAUYmZhZWPICFmYkRVQcbOwenmzse4MbFzc6DpIGXj8PD04sA8PbhF+CFaxEU8iWkAQT8hEVg
+                      OkTF/InR4eUVICYO1SIhCRMLDAoKDvFDVhUaEhwUFAjjSUlDdMiEhcOEItzdI6OiYxA6YqODIt3d
+                      I2DcuDBZsBY5eVTr4xMSYcyk5BRUOXkFsBZFJTQnp6alQxgZmVloUkrKYC0qqmji2WE5EEZuWB6a
+                      lKoKdi35YQUQRkFYPpFaCouKIYzi6EDitJSUlsGY5RWVRGjJLyxNy4ZxqtIqqvOxaVELQwZFZdkI
+                      JVU1RSiSalAt6rUwUBdWG1CP6pT6gNqwOrgCdQyHNYR5YQFhDXj8MiK1IAeyN6aORiyBjByVTc0F
+                      qBoKWpqwRCVSgilOaY2OaUPw29qjOzqLvTAchpos47u6EZyYnngUSRwpuTe6D+6qaFQdOPNLRzOM
+                      1dzhRZyW+CZouHk3dWLXglFcFIflQhj9YWjJGlZcaKAVSvjyPrRQ0oQVKDAQHlYFYUwIm4gqExGm
+                      BSkutaVQJeomwViTJqPK6OhCy2Q9sQBk8cY0DxjTJw0lAQWK6cOKfgNhpKK7ZMpUeF3jPa28BCET
+                      amiEqJKM+X1gxvWXpoUjVIVPnwErw71nmpgiqiQGBjNzbgs3j1nus+fMndc+Cwm0T52/oNR9lsdC
+                      S24ra7Tq1cbWjpXV3sHRCb1idXZ0sGdltXNxRateRwHRAACYHutzk/2I5QAAACV0RVh0ZGF0ZTpj
+                      cmVhdGUAMjAyMy0wMi0xM1QwODoxNToyOSswMDowMEUnN7UAAAAldEVYdGRhdGU6bW9kaWZ5ADIw
+                      MjMtMDItMTNUMDg6MTU6MjkrMDA6MDA0eo8JAAAAKHRFWHRkYXRlOnRpbWVzdGFtcAAyMDIzLTAy
+                      LTEzVDA4OjE1OjI5KzAwOjAwY2+u1gAAAABJRU5ErkJggg=="></image>
+                            </svg>
+                            <svg version="1.1" class="contactless" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="20px" height="20px"
+                                viewBox="0 0 50 50" xml:space="preserve">
+                                <image id="image0" width="50" height="50" x="0" y="0" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAQAAAC0NkA6AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+                      AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAJcEhZ
+                      cwAACxMAAAsTAQCanBgAAAAHdElNRQfnAg0IEzgIwaKTAAADDklEQVRYw+1XS0iUURQ+f5qPyjQf
+                      lGRFEEFK76koKGxRbWyVVLSOgsCgwjZBJJYuKogSIoOonUK4q3U0WVBWFPZYiIE6kuArG3VGzK/F
+                      fPeMM/MLt99/NuHdfPd888/57jn3nvsQWWj/VcMlvMMd5KRTogqx9iCdIjUUmcGR9ImUYowyP3xN
+                      GQJoRLVaZ2DaZf8kyjEJALhI28ELioyiwC+Rc3QZwRYyO/DH51hQgWm6DMIh10KmD4u9O16K49it
+                      VoPOAmcGAWWOepXIRScAoJZ2Frro8oN+EyTT6lWkkg6msZfMSR35QTJmjU0g15tIGSJ08ZZMJkJk
+                      HpNZgSkyXosS13TkJpZ62mPIJvOSzC1bp8vRhhCakEk7G9/o4gmZdbpsTcKu0m63FbnBP9Qrc15z
+                      bkbemfgNDtEOI8NO5L5O9VYyRYgmJayZ9nPaxZrSjW4+F6Uw9yQqIiIZwhp2huQTf6OIvCZyGM6g
+                      DJBZbyXifJXr7FZjGXsdxADxI7HUJFB6iWvsIhFpkoiIiGTJfjJfiCuJg2ZEspq9EHGVpYgzKqwJ
+                      qSAOEwuJQ/pxPvE3cYltJCLdxBLiSKKIE5HxJKcTRNeadxfhDiuYw44zVs1dxKwRk/uCxIiQkxKB
+                      sSctRVAge9g1E15EHE6yRUaJecRxcWlukdRIbGFOSZCMWQA/iWauIP3slREHXPyliqBcrrD71Amz
+                      Z+rD1Mt2Yr8TZc/UR4/YtFnbijnHi3UrN9vKQ9rPaJf867ZiaqDB+czeKYmd3pNa6fuI75MiC0uX
+                      XSR5aEMf7s7a6r/PudVXkjFb/SsrCRfROk0Fx6+H1i9kkTGn/E1vEmt1m089fh+RKdQ5O+xNJPUi
+                      cUIjO0Dm7HwvErEr0YxeibL1StSh37STafE4I7zcBdRq1DiOkdmlTJVnkQTBTS7X1FYyvfO4piaI
+                      nKbDCDaT2anLudYXCRFsQBgAcIF2/Okwgvz5+Z4tsw118dzruvIvjhTB+HOuWy8UvovEH6beitBK
+                      xDyxm9MmISKCWrzB7bSlaqGlsf0FC0gMjzTg6GgAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjMtMDIt
+                      MTNUMDg6MTk6NTYrMDA6MDCjlq7LAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIzLTAyLTEzVDA4OjE5
+                      OjU2KzAwOjAw0ssWdwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyMy0wMi0xM1QwODoxOTo1Nisw
+                      MDowMIXeN6gAAAAASUVORK5CYII="></image>
+                            </svg>
+                            <p class="number">9759 2484 5269 6576</p>
+                            <p class="valid_thru">VALID THRU</p>
+                            <p class="date_8264">1 2 / 2 4</p>
+                            <p class="name">SANAD WAGLE</p>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="strip"></div>
+                            <div class="mstrip"></div>
+                            <div class="sstrip">
+                                <p class="code">***</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="uiverse-terminal mt-12 scroll-reveal">
+                <div class="container">
+                    <div class="container_terminal"></div>
+                    <div class="terminal_toolbar">
+                        <div class="butt">
+                            <button class="btn btn-color"></button>
+                            <button class="btn"></button>
+                            <button class="btn"></button>
+                        </div>
+                        <p class="user">johndoe@admin: ~</p>
+                    </div>
+                    <div class="terminal_body">
+                        <div class="terminal_promt">
+                            <span class="terminal_user">johndoe@admin:</span>
+                            <span class="terminal_location">~</span>
+                            <span class="terminal_bling">$</span>
+                            <span class="terminal_cursor"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA -->
+        <section id="contact" class="bg-primary text-on-primary py-40 px-6 md:px-12 text-center overflow-hidden">
+            <span
+                class="font-label text-[10px] tracking-[0.5em] uppercase text-neutral-400 block mb-12 scroll-reveal">INITIATE
+                CONNECTION</span>
+            <h2 class="parallax font-headline italic text-5xl md:text-8xl mb-12 scroll-reveal scroll-reveal-delay-1"
+                data-speed="0.08">Let's build something precise.</h2>
+            <a class="font-headline text-2xl md:text-4xl underline underline-offset-8 decoration-1 hover:decoration-2 hover:text-outline-variant transition-all scroll-reveal scroll-reveal-delay-2"
+                href="mailto:hello@sanadwagle.com">hello@sanadwagle.com</a>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full flex flex-col md:flex-row justify-between items-center px-6 md:px-12 py-16 bg-surface-container gap-8">
+        <div class="font-sans text-[10px] tracking-[0.2em] uppercase text-neutral-500">
+            © 2024 SANAD WAGLE. ALL RIGHTS RESERVED.
+        </div>
+        <div class="flex justify-center md:justify-end app-container z-10 w-full mb-12 md:mb-0 mt-24 md:mt-0">
+            <div class="wallet mx-auto md:mr-0 md:ml-auto">
+                <div class="wallet-back"></div>
+
+                <a href="https://www.instagram.com/sanadwagle/" target="_blank" rel="noopener noreferrer"
+                    class="social-card card-instagram"> <!-- Instagram -->
+                    <div class="card-inner relative overflow-hidden">
+                        <svg class="card-bg-icon" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M18,5.75A0.75,0.75 0 0,0 17.25,6.5A0.75,0.75 0 0,0 18,7.25A0.75,0.75 0 0,0 18.75,6.5A0.75,0.75 0 0,0 18,5.75Z" />
+                        </svg>
+                        <div class="card-top">
+                            <span class="font-bold tracking-tighter">Instagram</span>
+                            <svg class="card-logo" viewBox="0 0 24 24">
+                                <path
+                                    d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7M12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9M18,5.75A0.75,0.75 0 0,0 17.25,6.5A0.75,0.75 0 0,0 18,7.25A0.75,0.75 0 0,0 18.75,6.5A0.75,0.75 0 0,0 18,5.75Z" />
+                            </svg>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-info">
+                                <span class="social-label">Creator</span>
+                                <span class="social-value">@SANADWAGLE</span>
+                            </div>
+                            <div class="card-number-wrapper">
+                                <span class="hidden-stars">•••• IG</span>
+                                <span class="card-number">instagram.com/sanadwagle</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.facebook.com/sanad.wagle.94/" target="_blank" rel="noopener noreferrer"
+                    class="social-card card-facebook"> <!-- Facebook -->
+                    <div class="card-inner relative overflow-hidden">
+                        <svg class="card-bg-icon" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z" />
+                        </svg>
+                        <div class="card-top">
+                            <span class="font-bold tracking-tighter">Facebook</span>
+                            <svg class="card-logo" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96C18.34 21.21 22 17.06 22 12.06C22 6.53 17.5 2.04 12 2.04Z" />
+                            </svg>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-info">
+                                <span class="social-label">Connect</span>
+                                <span class="social-value">SANAD WAGLE</span>
+                            </div>
+                            <div class="card-number-wrapper">
+                                <span class="hidden-stars">•••• FB</span>
+                                <span class="card-number">facebook.com/sanad.wagle.94</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://github.com/sanadnp" target="_blank" rel="noopener noreferrer"
+                    class="social-card card-github"> <!-- GitHub -->
+                    <div class="card-inner relative overflow-hidden">
+                        <svg class="card-bg-icon" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.49,20.14 9.49,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                        </svg>
+                        <div class="card-top">
+                            <span class="font-bold tracking-tighter">GitHub</span>
+                            <svg class="card-logo" viewBox="0 0 24 24">
+                                <path
+                                    d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.49,20.14 9.49,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z" />
+                            </svg>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-info">
+                                <span class="social-label">Code</span>
+                                <span class="social-value">@sanadnp</span>
+                            </div>
+                            <div class="card-number-wrapper">
+                                <span class="hidden-stars">•••• GH</span>
+                                <span class="card-number">github.com/sanadnp</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://g.dev/sanadwagle" target="_blank" rel="noopener noreferrer"
+                    class="social-card card-gdev"> <!-- Google Dev -->
+                    <div class="card-inner relative overflow-hidden">
+                        <svg class="card-bg-icon" viewBox="0 0 24 24">
+                            <path fill="currentColor"
+                                d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.12,19.27 4.96,15.97 4.96,12C4.96,8.03 8.12,4.73 12.19,4.73C15.31,4.73 17.09,6.74 17.09,6.74L19.5,4.55C19.5,4.55 16.5,2 12.18,2C6.5,2 2,6.5 2,12C2,17.5 6.5,22 12.18,22C17.5,22 22,17.5 22,12C22,11.83 22,11.1 21.35,11.1Z" />
+                        </svg>
+                        <div class="card-top">
+                            <span class="font-bold tracking-tighter">Google <b style="color:#0F9D58">Dev</b></span>
+                            <svg class="card-logo" viewBox="0 0 24 24">
+                                <path
+                                    d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.12,19.27 4.96,15.97 4.96,12C4.96,8.03 8.12,4.73 12.19,4.73C15.31,4.73 17.09,6.74 17.09,6.74L19.5,4.55C19.5,4.55 16.5,2 12.18,2C6.5,2 2,6.5 2,12C2,17.5 6.5,22 12.18,22C17.5,22 22,17.5 22,12C22,11.83 22,11.1 21.35,11.1Z" />
+                            </svg>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="card-info">
+                                <span class="social-label">Developer</span>
+                                <span class="social-value">@sanadwagle</span>
+                            </div>
+                            <div class="card-number-wrapper">
+                                <span class="hidden-stars">•••• DEV</span>
+                                <span class="card-number">g.dev/sanadwagle</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="pocket">
+                    <svg class="pocket-svg" viewBox="0 0 280 160" fill="none">
+                        <path
+                            d="M 0 20 C 0 10, 5 10, 10 10 C 20 10, 25 25, 40 25 L 240 25 C 255 25, 260 10, 270 10 C 275 10, 280 10, 280 20 L 280 120 C 280 155, 260 160, 240 160 L 40 160 C 20 160, 0 155, 0 120 Z"
+                            fill="#171717"></path>
+                        <path
+                            d="M 8 22 C 8 16, 12 16, 15 16 C 23 16, 27 29, 40 29 L 240 29 C 253 29, 257 16, 265 16 C 268 16, 272 16, 272 22 L 272 120 C 272 150, 255 152, 240 152 L 40 152 C 25 152, 8 152, 8 120 Z"
+                            stroke="#333333" stroke-width="1.5" stroke-dasharray="6 4"></path>
+                    </svg>
+                    <div class="pocket-content">
+                        <div style="position: relative; height: 24px; width: 100%;">
+                            <div class="balance-stars">******</div>
+                            <div class="balance-real">Socials</div>
+                        </div>
+                        <div style="color: #a3a3a3; font-size: 12px; font-weight: 500;">
+                            My Networks
+                        </div>
+                        <div class="eye-icon-wrapper">
+                            <svg class="eye-icon eye-slash" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <line x1="3" y1="3" x2="21" y2="21"></line>
+                            </svg>
+                            <svg class="eye-icon eye-open" style="opacity: 0;" width="20" height="20"
+                                viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Mobile JS & BottomNavBar (Mobile Only) -->
+    <script>
+        // Theme immediate load
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            if (themeToggleBtn) {
+                themeToggleBtn.checked = document.documentElement.classList.contains('dark');
+
+                themeToggleBtn.addEventListener('change', function (e) {
+                    if (!e.target.checked) {
+                        document.documentElement.classList.remove('dark');
+                        localStorage.setItem('theme', 'light');
+                    } else {
+                        document.documentElement.classList.add('dark');
+                        localStorage.setItem('theme', 'dark');
+                    }
+                });
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+            document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+            // Hero Image color logic
+            const heroImg = document.getElementById('hero-image');
+            let colorfulTimeout;
+
+            function makeColorful() {
+                if (heroImg) {
+                    heroImg.classList.remove('grayscale');
+                    clearTimeout(colorfulTimeout);
+                    colorfulTimeout = setTimeout(() => {
+                        heroImg.classList.add('grayscale');
+                    }, 1000); // 1-second timeout before returning to grayscale
+                }
+            }
+
+            window.addEventListener('mousemove', makeColorful);
+            window.addEventListener('scroll', makeColorful);
+            window.addEventListener('touchmove', makeColorful);
+
+            // Parallax Engine
+            const parallaxElements = document.querySelectorAll('.parallax');
+            let scrollPos = window.scrollY;
+            let ticking = false;
+
+            function applyParallax() {
+                parallaxElements.forEach(el => {
+                    const speed = parseFloat(el.getAttribute('data-speed'));
+                    let yPos = scrollPos * -speed;
+                    el.style.transform = `translate3d(0, ${yPos}px, 0)`;
+                });
+                ticking = false;
+            }
+
+            window.addEventListener('scroll', function () {
+                scrollPos = window.scrollY;
+                if (!ticking) {
+                    window.requestAnimationFrame(applyParallax);
+                    ticking = true;
+                }
+            });
+
+            // Initial setup
+            applyParallax();
+
+            // ── Mobile Drawer ──
+            function openDrawer() {
+                document.getElementById('mobile-drawer').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeDrawer() {
+                document.getElementById('mobile-drawer').classList.remove('open');
+                document.body.style.overflow = '';
+            }
+            window.closeDrawer = closeDrawer;
+            document.getElementById('menu-open-btn').addEventListener('click', openDrawer);
+            document.getElementById('menu-close-btn').addEventListener('click', closeDrawer);
+            document.getElementById('mobile-drawer-overlay').addEventListener('click', closeDrawer);
+
+            // ── Flip Card: tap on mobile ──
+            const flipCard = document.getElementById('flip-card-main');
+            if (flipCard) {
+                flipCard.addEventListener('click', function() {
+                    if (window.innerWidth < 768) {
+                        this.classList.toggle('flip-card-tapped');
+                    }
+                });
+            }
+
+            // ── Wallet: tap on mobile ──
+            const wallet = document.querySelector('.wallet');
+            if (wallet) {
+                wallet.addEventListener('click', function(e) {
+                    if (window.innerWidth < 768) {
+                        const isExpanded = this.classList.toggle('wallet-touch-expanded');
+                        // If a card link was clicked while expanded, let it navigate
+                        if (!isExpanded) e.preventDefault();
+                    }
+                });
+            }
+
+            // ── Bottom Nav: active section highlight ──
+            const sections = ['work', 'about', 'contact'];
+            const navLinks = document.querySelectorAll('.bottom-nav-link');
+            function updateActiveNav() {
+                let current = '';
+                sections.forEach(id => {
+                    const sec = document.getElementById(id);
+                    if (sec && window.scrollY >= sec.offsetTop - 120) current = id;
+                });
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.dataset.section === current);
+                });
+            }
+            window.addEventListener('scroll', updateActiveNav, { passive: true });
+            updateActiveNav();
+        });
+    </script>
+    <nav id="bottom-nav"
+        class="md:hidden fixed bottom-0 left-0 w-full bg-surface/90 backdrop-blur-md flex justify-around items-center py-3 z-[150] border-t border-outline-variant">
+        <a class="bottom-nav-link flex flex-col items-center gap-0.5 text-neutral-500 transition-colors duration-200 px-4 py-1" href="#work" data-section="work">
+            <span class="material-symbols-outlined text-[22px]">grid_view</span>
+            <span class="text-[7px] tracking-widest uppercase">WORK</span>
+        </a>
+        <a class="bottom-nav-link flex flex-col items-center gap-0.5 text-neutral-500 transition-colors duration-200 px-4 py-1" href="#about" data-section="about">
+            <span class="material-symbols-outlined text-[22px]">person</span>
+            <span class="text-[7px] tracking-widest uppercase">ABOUT</span>
+        </a>
+        <a class="bottom-nav-link flex flex-col items-center gap-0.5 text-neutral-500 transition-colors duration-200 px-4 py-1" href="#contact" data-section="contact">
+            <span class="material-symbols-outlined text-[22px]">mail</span>
+            <span class="text-[7px] tracking-widest uppercase">CONTACT</span>
+        </a>
+    </nav>
+</body>
+
+</html>
